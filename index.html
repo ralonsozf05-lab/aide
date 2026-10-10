@@ -1,16 +1,286 @@
-<!doctype html>
-<html lang="<!-- figma:lang -->">
-  <head>
-    <!-- figma:head-start -->
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><!-- figma:title --></title>
-    <!-- figma:head-end -->
-  </head>
-  <body>
-    <!-- figma:body-start -->
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-    <!-- figma:body-end -->
-  </body>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIDE - Sistema Inteligente Anti-Estafas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --bs-body-bg: #0f172a;
+            --bs-body-color: #f8fafc;
+            --card-bg: #1e293b;
+            --accent-blue: #38bdf8;
+            --accent-danger: #ef4444;
+            --accent-warning: #f59e0b;
+            --accent-success: #10b981;
+        }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        .bg-card { background-color: var(--card-bg); border: 1px solid #334155; }
+        .hero-banner { background: linear-gradient(135deg, #1e1b4b 0%, #0f172a 100%); border-bottom: 2px solid #312e81; }
+        .badge-risk-high { background-color: rgba(239, 68, 68, 0.2); color: #fca5a5; border: 1px solid var(--accent-danger); }
+        .badge-risk-medium { background-color: rgba(245, 158, 11, 0.2); color: #fde047; border: 1px solid var(--accent-warning); }
+        .badge-risk-low { background-color: rgba(16, 185, 129, 0.2); color: #6ee7b7; border: 1px solid var(--accent-success); }
+        .nav-pills .nav-link.active { background-color: #3b82f6; }
+        .nav-pills .nav-link { color: #94a3b8; }
+        .list-group-item { background-color: #1e293b; border-color: #334155; color: #f8fafc; }
+        .call-sim { background: linear-gradient(180deg, #111827 0%, #030712 100%); border: 2px solid var(--accent-danger); border-radius: 20px; }
+    </style>
+</head>
+<body>
+
+    <!-- Encabezado / Navbar -->
+    <nav class="navbar navbar-dark bg-dark border-bottom border-secondary sticky-top px-3">
+        <div class="container-fluid">
+            <span class="navbar-brand fw-bold text-info fs-4">
+                <i class="bi bi-shield-lock-fill me-2"></i>AIDE
+            </span>
+            <span class="badge bg-primary rounded-pill">Impacto Emprendedor UDD 2026</span>
+        </div>
+    </nav>
+
+    <!-- Banner Estadístico -->
+    <div class="hero-banner p-4 text-center">
+        <div class="container">
+            <h1 class="fw-bold mb-2 text-white fs-3">Asistencia Inteligente frente a Estafas Digitales</h1>
+            <p class="text-info fs-6 mb-3">Detecta • Alerta • Explica • Acompaña</p>
+            <div class="row g-2 justify-content-center">
+                <div class="col-4 col-md-3">
+                    <div class="bg-card p-2 rounded">
+                        <div class="fs-5 fw-bold text-danger">37,7M</div>
+                        <div class="small text-muted" style="font-size: 0.75rem;">Phishing Chile (12m)</div>
+                    </div>
+                </div>
+                <div class="col-4 col-md-3">
+                    <div class="bg-card p-2 rounded">
+                        <div class="fs-5 fw-bold text-warning">+109%</div>
+                        <div class="small text-muted" style="font-size: 0.75rem;">Reclamos SERNAC</div>
+                    </div>
+                </div>
+                <div class="col-4 col-md-3">
+                    <div class="bg-card p-2 rounded">
+                        <div class="fs-5 fw-bold text-info">40%</div>
+                        <div class="small text-muted" style="font-size: 0.75rem;">Ad. Mayor / Jóvenes</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navegación por pestañas -->
+    <div class="container mt-3">
+        <ul class="nav nav-pills nav-justified mb-3 bg-card p-2 rounded-3" id="mainTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="mensajes-tab" data-bs-toggle="tab" data-bs-target="#mensajes" type="button" role="tab">
+                    <i class="bi bi-chat-left-dots-fill me-1"></i>Mensajes
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="llamadas-tab" data-bs-toggle="tab" data-bs-target="#llamadas" type="button" role="tab">
+                    <i class="bi bi-telephone-inbound-fill me-1"></i>Llamadas
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="analizador-tab" data-bs-toggle="tab" data-bs-target="#analizador" type="button" role="tab">
+                    <i class="bi bi-search me-1"></i>Analizar
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="pitch-tab" data-bs-toggle="tab" data-bs-target="#pitch" type="button" role="tab">
+                    <i class="bi bi-file-earmark-text-fill me-1"></i>Proyecto AIDE
+                </button>
+            </li>
+        </ul>
+
+        <!-- Contenido de las Pestañas -->
+        <div class="tab-content" id="mainTabContent">
+            
+            <!-- PESTAÑA 1: MENSAJES SOSPECHOSOS -->
+            <div class="tab-pane fade show active" id="mensajes" role="tabpanel">
+                <div class="card bg-card p-3 mb-3">
+                    <h5 class="text-info mb-3"><i class="bi bi-shield-alert me-2"></i>Filtro Preventivo de SMS y WhatsApp</h5>
+                    <p class="small text-muted">AIDE evalúa automáticamente el lenguaje, patrones de urgencia y enlaces dudosos.</p>
+                    
+                    <div class="list-group">
+                        <div class="list-group-item list-group-item-action p-3 mb-2 rounded" onclick="mostrarDetalle('estafa1')">
+                            <div class="d-flex w-100 justify-content-between align-items-center mb-1">
+                                <span class="fw-bold text-warning"><i class="bi bi-whatsapp me-1"></i>WhatsApp Desconocido</span>
+                                <span class="badge badge-risk-high">Riesgo Alto</span>
+                            </div>
+                            <p class="mb-1 text-white-50 small">"Mamá, cambié mi número. Necesito que me transfieras dinero urgentemente para abonar..."</p>
+                            <small class="text-danger fw-bold"><i class="bi bi-exclamation-triangle me-1"></i>Patrón: Suplantación de Familiar</small>
+                        </div>
+
+                        <div class="list-group-item list-group-item-action p-3 mb-2 rounded" onclick="mostrarDetalle('estafa2')">
+                            <div class="d-flex w-100 justify-content-between align-items-center mb-1">
+                                <span class="fw-bold text-info"><i class="bi bi-chat-text-fill me-1"></i>SMS de Texto</span>
+                                <span class="badge badge-risk-high">Riesgo Alto</span>
+                            </div>
+                            <p class="mb-1 text-white-50 small">"BancoEstado: Su cuenta ha sido suspendida. Verifique sus datos de inmediato en: https://bancostado-verificacion.cl"</p>
+                            <small class="text-danger fw-bold"><i class="bi bi-exclamation-triangle me-1"></i>Patrón: Enlace Falso (Phishing)</small>
+                        </div>
+
+                        <div class="list-group-item list-group-item-action p-3 rounded" onclick="mostrarDetalle('legitimo')">
+                            <div class="d-flex w-100 justify-content-between align-items-center mb-1">
+                                <span class="fw-bold text-success"><i class="bi bi-chat-check-fill me-1"></i>SMS Legítimo</span>
+                                <span class="badge badge-risk-low">Seguro</span>
+                            </div>
+                            <p class="mb-1 text-white-50 small">"Su código de verificación es 849201. No lo comparta con nadie."</p>
+                            <small class="text-success"><i class="bi bi-check-circle me-1"></i>Mensaje informativo estándar</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PESTAÑA 2: SIMULADOR DE LLAMADAS -->
+            <div class="tab-pane fade" id="llamadas" role="tabpanel">
+                <div class="card bg-card p-3 mb-3 text-center">
+                    <h5 class="text-info mb-2"><i class="bi bi-telephone-outbound me-2"></i>Detector de Llamadas Falsas (Spoofing)</h5>
+                    <p class="small text-muted mb-3">Identifica suplantación de ejecutivos bancarios e intentos de fraude telefónico.</p>
+
+                    <div class="call-sim p-4 my-2 mx-auto text-white" style="max-width: 350px;">
+                        <div class="badge bg-danger mb-2">ALERTA AIDE: POSIBLE FRAUDE</div>
+                        <h4 class="fw-bold text-warning mb-1">+56 9 4012 9981</h4>
+                        <p class="text-muted small">Número reportado 142 veces por suplantación bancaria</p>
+                        
+                        <div class="p-3 my-3 bg-dark rounded border border-warning text-start small">
+                            <i class="bi bi-info-circle-fill text-warning me-1"></i> <strong>Explicación AIDE:</strong> Este número utiliza patrones de llamada masiva automatizada. No entregues claves ni códigos SMS durante la llamada.
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-danger fw-bold" onclick="alert('Llamada bloqueada y número añadido a la lista negra.')">
+                                <i class="bi bi-telephone-x-fill me-2"></i>Bloquear y Rechazar
+                            </button>
+                            <button class="btn btn-outline-light btn-sm" onclick="alert('Asistente AIDE contestará y transcribirá el mensaje sin arriesgar tus datos.')">
+                                <i class="bi bi-robot me-1"></i>Contestar con Asistente AIDE
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PESTAÑA 3: ANALIZADOR DE TEXTO O ENLACES -->
+            <div class="tab-pane fade" id="analizador" role="tabpanel">
+                <div class="card bg-card p-3">
+                    <h5 class="text-info mb-2"><i class="bi bi-shield-check me-2"></i>Analizar Mensaje o Enlace Sospechoso</h5>
+                    <p class="small text-muted">Copia y pega cualquier texto o enlace de duda para obtener un diagnóstico en lenguaje sencillo.</p>
+
+                    <div class="mb-3">
+                        <textarea id="inputText" class="form-control bg-dark text-white border-secondary" rows="4" placeholder="Ej: Pega aquí el mensaje de WhatsApp, SMS o correo dudoso..."></textarea>
+                    </div>
+
+                    <div class="d-flex gap-2 mb-3">
+                        <button class="btn btn-primary w-100 fw-bold" onclick="analizarTexto()">
+                            <i class="bi bi-cpu me-2"></i>Analizar con AIDE
+                        </button>
+                    </div>
+
+                    <!-- Resultado del análisis -->
+                    <div id="resultadoAnalisis" class="p-3 rounded bg-dark border border-secondary d-none">
+                        <div id="resBadge" class="badge mb-2">---</div>
+                        <h6 id="resTitulo" class="fw-bold text-white mb-2">---</h6>
+                        <p id="resExplicacion" class="small text-white-50 mb-2">---</p>
+                        <div id="resRecomendacion" class="p-2 bg-secondary bg-opacity-25 rounded small text-info">---</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PESTAÑA 4: PROYECTO / PITCH UDD -->
+            <div class="tab-pane fade" id="pitch" role="tabpanel">
+                <div class="card bg-card p-3 mb-3">
+                    <h5 class="text-info fw-bold mb-3"><i class="bi bi-journal-bookmark-fill me-2"></i>Información del Proyecto AIDE</h5>
+                    
+                    <div class="mb-3">
+                        <h6 class="text-warning fw-bold"><i class="bi bi-bullseye me-1"></i>Propuesta de Valor</h6>
+                        <p class="small text-white-50">AIDE no solo detecta o bloquea mensajes: <strong>explica en lenguaje sencillo</strong> por qué un mensaje o llamada es peligrosa y acompaña al usuario con menor experiencia digital para evitar que caiga en la estafa.</p>
+                    </div>
+
+                    <div class="mb-3">
+                        <h6 class="text-warning fw-bold"><i class="bi bi-people-fill me-1"></i>Usuario Objetivo / Early Adopter</h6>
+                        <p class="small text-white-50">Adultos mayores y personas con baja alfabetización digital que reciben intentos de fraude, tienen dudas para diferenciar mensajes falsos y suelen pedir ayuda a un familiar antes de actuar.</p>
+                    </div>
+
+                    <div class="mb-3">
+                        <h6 class="text-warning fw-bold"><i class="bi bi-diagram-3-fill me-1"></i>Diferenciación Competitiva</h6>
+                        <div class="table-responsive">
+                            <table class="table table-dark table-bordered table-sm small">
+                                <thead>
+                                    <tr>
+                                        <th>Apps Tradicionales</th>
+                                        <th class="text-info">AIDE</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Solo bloquean spam reportado</td>
+                                        <td>Analiza patrones de ingeniería social en tiempo real</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Alertas técnicas o confusas</td>
+                                        <td>Explicación en lenguaje simple y directo</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h6 class="text-warning fw-bold"><i class="bi bi-mortarboard-fill me-1"></i>Equipo Fundador</h6>
+                        <p class="small text-white-50 mb-0">Estudiantes de Técnico en Informática enfocados en ciberseguridad accesible, desarrollo móvil e inteligencia artificial preventiva.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function mostrarDetalle(tipo) {
+            const resBox = document.getElementById('resultadoAnalisis');
+            const tabAnalizador = new bootstrap.Tab(document.getElementById('analizador-tab'));
+            tabAnalizador.show();
+
+            if(tipo === 'estafa1') {
+                document.getElementById('inputText').value = "Mamá, cambié mi número. Necesito que me transfieras dinero urgentemente para abonar una emergencia...";
+            } else if(tipo === 'estafa2') {
+                document.getElementById('inputText').value = "BancoEstado: Su cuenta ha sido suspendida. Verifique sus datos de inmediato en: https://bancostado-verificacion.cl";
+            } else {
+                document.getElementById('inputText').value = "Su código de verificación es 849201. No lo comparta con nadie.";
+            }
+            analizarTexto();
+        }
+
+        function analizarTexto() {
+            const texto = document.getElementById('inputText').value.toLowerCase();
+            const resBox = document.getElementById('resultadoAnalisis');
+            const badge = document.getElementById('resBadge');
+            const titulo = document.getElementById('resTitulo');
+            const exp = document.getElementById('resExplicacion');
+            const rec = document.getElementById('resRecomendacion');
+
+            if(!texto.trim()) {
+                alert('Por favor, ingresa o pega algún mensaje para analizar.');
+                return;
+            }
+
+            resBox.classList.remove('d-none');
+
+            if(texto.includes('transfieras') || texto.includes('cambie mi numero') || texto.includes('banco') || texto.includes('http') || texto.includes('suspendida')) {
+                badge.className = "badge badge-risk-high";
+                badge.innerText = "ALERTA AIDE: RIESGO ALTO DE ESTAFA";
+                titulo.innerText = "Detección de Ingeniería Social / Suplantación";
+                exp.innerText = "AIDE detectó lenguaje de urgencia o un enlace sospechoso que imita a una institución bancaria o familiar. Es un patrón típico de fraude.";
+                rec.innerHTML = "<i class='bi bi-shield-x me-1'></i> <strong>Recomendación:</strong> No hagas clic en ningún enlace, no transfieras dinero ni entregues claves. Contacta directamente a tu familiar por llamada telefónica.";
+            } else {
+                badge.className = "badge badge-risk-low";
+                badge.innerText = "MENSAJE SIN PATRONES DE RIESGO EVIDENTES";
+                titulo.innerText = "Mensaje Normal / Seguro";
+                exp.innerText = "No se detectaron enlaces fraudulentos ni solicitudes de dinero urgentes.";
+                rec.innerHTML = "<i class='bi bi-check-circle me-1'></i> <strong>Recomendación:</strong> De todas formas, nunca compartas claves secretas ni códigos SMS con terceros.";
+            }
+        }
+    </script>
+</body>
 </html>
