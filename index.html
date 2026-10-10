@@ -329,4 +329,172 @@
                     <div>
                         <h3 class="text-lg font-bold text-white">+56 2 2990 1199</h3>
                         <p class="text-xs text-red-400 font-bold mt-0.5">⚠️ Posible Suplantación Banco</p>
-                        <p class="text-[11px] text-slate-400 max-w
+                        <p class="text-[11px] text-slate-400 max-w-[220px] mx-auto mt-2 bg-slate-900 border border-slate-800 p-2 rounded-lg">
+                            "Reportado por solicitar claves dinámicas de transferencia."
+                        </p>
+                    </div>
+                </div>
+
+                <div class="space-y-2.5 pb-4">
+                    <button onclick="answerWithAI()" class="w-full bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold py-3 rounded-xl flex items-center justify-center space-x-2 shadow-lg shadow-blue-600/30 active:scale-95 transition-all">
+                        <i class="fa-solid fa-robot"></i>
+                        <span>Contestar con Asistente IA</span>
+                    </button>
+
+                    <button onclick="hangUpCall('Llamada bloqueada y número reportado')" class="w-full bg-red-600/20 hover:bg-red-600/30 border border-red-500/40 text-red-400 text-xs font-bold py-3 rounded-xl flex items-center justify-center space-x-2 active:scale-95 transition-all">
+                        <i class="fa-solid fa-phone-slash"></i>
+                        <span>Colgar y Bloquear</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- BOTTOM NAVIGATION BAR (5 BUTTONS) -->
+            <nav class="h-16 bg-cardBg/95 backdrop-blur-md border-t border-cardBorder px-2 grid grid-cols-5 items-center z-30 shrink-0">
+                <button onclick="switchTab('home')" id="nav-btn-home" class="flex flex-col items-center space-y-1 text-brandBlue transition-all">
+                    <i class="fa-solid fa-house text-sm"></i>
+                    <span class="text-[8px] font-bold">Inicio</span>
+                </button>
+
+                <button onclick="switchTab('messages')" id="nav-btn-messages" class="flex flex-col items-center space-y-1 text-slate-500 transition-all">
+                    <i class="fa-solid fa-message text-sm"></i>
+                    <span class="text-[8px] font-bold">Mensajes</span>
+                </button>
+
+                <button onclick="switchTab('detected')" id="nav-btn-detected" class="flex flex-col items-center space-y-1 text-slate-500 transition-all">
+                    <div class="relative">
+                        <i class="fa-solid fa-triangle-exclamation text-sm text-red-400"></i>
+                    </div>
+                    <span class="text-[8px] font-bold text-red-400">Detectados</span>
+                </button>
+
+                <button onclick="switchTab('calls')" id="nav-btn-calls" class="flex flex-col items-center space-y-1 text-slate-500 transition-all">
+                    <i class="fa-solid fa-phone-slash text-sm"></i>
+                    <span class="text-[8px] font-bold">Llamadas</span>
+                </button>
+
+                <button onclick="switchTab('scanner')" id="nav-btn-scanner" class="flex flex-col items-center space-y-1 text-slate-500 transition-all">
+                    <i class="fa-solid fa-wand-magic-sparkles text-sm"></i>
+                    <span class="text-[8px] font-bold">Escáner</span>
+                </button>
+            </nav>
+
+            <div class="h-4 bg-mobileBg flex items-center justify-center shrink-0">
+                <div class="w-28 h-1 bg-slate-700 rounded-full"></div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const mins = String(now.getMinutes()).padStart(2, '0');
+            document.getElementById('current-time').innerText = `${hours}:${mins}`;
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        const scamDatabase = [
+            {
+                id: 0,
+                title: "SMS BancoEstado / Clave Bloqueada",
+                sender: "SMS-Banco",
+                tag: "ALTO RIESGO",
+                text: "BancoEstado: Su clave de acceso ha sido suspendida. Reagende en: https://bancostado-clave-verificacion.cl"
+            },
+            {
+                id: 1,
+                title: "Estafa WhatsApp / Tío en Apuros",
+                sender: "+56 9 7781 0023",
+                tag: "ESTAFA",
+                text: "Mamá, cambié mi número. Necesito que me transfieras dinero urgente para solucionar una emergencia..."
+            }
+        ];
+
+        function renderMessagesList() {
+            const container = document.getElementById('messages-list-container');
+            container.innerHTML = scamDatabase.map((item) => `
+                <div class="bg-cardBg border border-cardBorder p-3 rounded-xl space-y-2">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[10px] font-bold text-slate-400">${item.sender}</span>
+                        <span class="text-[9px] bg-red-500/20 text-red-400 border border-red-500/30 px-1.5 py-0.2 rounded font-bold">${item.tag}</span>
+                    </div>
+                    <p class="text-xs font-bold text-white">${item.title}</p>
+                    <p class="text-[10px] text-slate-400">"${item.text}"</p>
+                </div>
+            `).join('');
+        }
+        renderMessagesList();
+
+        function switchTab(tab) {
+            const tabs = ['home', 'messages', 'detected', 'calls', 'scanner'];
+            
+            tabs.forEach(t => {
+                document.getElementById(`view-${t}`).classList.add('hidden');
+                const btn = document.getElementById(`nav-btn-${t}`);
+                btn.classList.remove('text-brandBlue');
+                btn.classList.add('text-slate-500');
+            });
+
+            document.getElementById(`view-${tab}`).classList.remove('hidden');
+            const activeBtn = document.getElementById(`nav-btn-${tab}`);
+            activeBtn.classList.add('text-brandBlue');
+            activeBtn.classList.remove('text-slate-500');
+        }
+
+        function triggerIncomingCall() {
+            const callScreen = document.getElementById('incoming-call-screen');
+            callScreen.classList.remove('hidden');
+            callScreen.classList.add('flex');
+        }
+
+        function hangUpCall(message) {
+            const callScreen = document.getElementById('incoming-call-screen');
+            callScreen.classList.add('hidden');
+            callScreen.classList.remove('flex');
+            alert(`📞 ${message}`);
+        }
+
+        function answerWithAI() {
+            alert('🤖 Asistente AIDE Activado: "Esta línea está protegida. Indique su RUT y motivo de llamada..." \n\n[El estafador ha colgado la llamada].');
+            hangUpCall('Estafador ahuyentado por la IA');
+        }
+
+        function triggerFullScan() {
+            const btnText = document.getElementById('scan-btn-text');
+            btnText.innerText = 'Escaneando SMS y Llamadas...';
+            setTimeout(() => {
+                btnText.innerText = '¡Análisis Completo! Todo Seguro';
+                setTimeout(() => {
+                    btnText.innerText = 'Escanear Dispositivo Ahora';
+                }, 2000);
+            }, 1500);
+        }
+
+        function simulateScanAnimation() {
+            triggerFullScan();
+        }
+
+        function runMobileScan() {
+            const text = document.getElementById('mobile-scan-input').value.trim();
+            const result = document.getElementById('mobile-scan-result');
+
+            if (!text) {
+                alert('Ingresa un texto o enlace para analizar');
+                return;
+            }
+
+            result.classList.remove('hidden');
+            result.innerHTML = `
+                <div class="p-3.5 bg-red-500/10 border border-red-500/40 rounded-xl space-y-2 mt-2">
+                    <div class="flex items-center justify-between text-red-400 font-bold text-xs">
+                        <span><i class="fa-solid fa-triangle-exclamation"></i> RIESGO ALTO DE ESTAFA</span>
+                    </div>
+                    <p class="text-[11px] text-slate-300">AIDE detectó patrones de suplantación de identidad y enlaces sospechosos.</p>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>
