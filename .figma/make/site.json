@@ -1,0 +1,10 @@
+{
+  "description": "This app helps users identify and report scams, providing real-time alerts and resources to protect against fraud and enhance online safety.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
