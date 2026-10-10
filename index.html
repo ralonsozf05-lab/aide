@@ -3,177 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AIDE - Asistencia Inteligente frente a Estafas Digitales</title>
+    <title>AIDE - App Móvil Anti-Estafas</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
-    <style>
-        :root {
-            --bg-dark: #0f172a;
-            --card-bg: #1e293b;
-            --accent-blue: #38bdf8;
-            --accent-danger: #ef4444;
-            --accent-warning: #f59e0b;
-            --accent-success: #10b981;
-        }
-
-        body {
-            background-color: #020617;
-            color: #f8fafc;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0;
-            padding: 0;
-        }
-
-        /* CONTENEDOR MÓVIL PANTALLA COMPLETA */
-        .app-container {
-            width: 100%;
-            max-width: 430px;
-            height: 100vh;
-            max-height: 932px;
-            background: var(--bg-dark);
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
-        }
-
-        /* PANTALLA DE CONTENIDO */
-        .phone-screen {
-            flex: 1;
-            overflow-y: auto;
-            padding: 16px;
-            padding-top: 20px;
-            padding-bottom: 80px;
-            scrollbar-width: none;
-        }
-        .phone-screen::-webkit-scrollbar { display: none; }
-
-        /* NAVEGACIÓN INFERIOR */
-        .bottom-nav {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 70px;
-            background: #0f172a;
-            border-top: 1px solid #334155;
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            z-index: 999;
-            padding-bottom: 10px;
-        }
-
-        .nav-item-btn {
-            background: none;
-            border: none;
-            color: #64748b;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            font-size: 0.75rem;
-            gap: 3px;
-            width: 33%;
-            cursor: pointer;
-            transition: color 0.2s;
-        }
-
-        .nav-item-btn.active {
-            color: var(--accent-blue);
-            font-weight: bold;
-        }
-
-        .nav-item-btn i {
-            font-size: 1.3rem;
-        }
-
-        .bg-card { 
-            background-color: var(--card-bg); 
-            border: 1px solid #334155; 
-            border-radius: 16px;
-        }
-
-        .badge-risk-high { 
-            background-color: rgba(239, 68, 68, 0.2); 
-            color: #fca5a5; 
-            border: 1px solid var(--accent-danger); 
-        }
-
-        .badge-risk-low { 
-            background-color: rgba(16, 185, 129, 0.2); 
-            color: #6ee7b7; 
-            border: 1px solid var(--accent-success); 
-        }
-
-        /* MODAL POP-UP BANCOESTADO */
-        .scam-modal {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(2, 6, 23, 0.9);
-            backdrop-filter: blur(8px);
-            z-index: 2000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-
-        .modal-content-card {
-            background: #1e293b;
-            border: 2px solid var(--accent-danger);
-            border-radius: 20px;
-            padding: 20px;
-            width: 100%;
-            box-shadow: 0 0 30px rgba(239, 68, 68, 0.3);
-            animation: popIn 0.3s ease-out;
-        }
-
-        @keyframes popIn {
-            from { transform: scale(0.9); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
-        }
-    </style>
-</head>
-<body>
-
-    <div class="app-container">
-
-        <!-- CONTENIDO DE LA APLICACIÓN -->
-        <div class="phone-screen">
-            
-            <!-- ENCABEZADO AIDE -->
-            <div class="d-flex justify-content-between align-items-center mb-4">
-                <div>
-                    <h4 class="fw-bold mb-0 text-info"><i class="bi bi-shield-check me-2"></i>AIDE</h4>
-                    <small class="text-muted" style="font-size: 0.7rem;">Detecta • Alerta • Explica • Acompaña</small>
-                </div>
-                <span class="badge bg-primary px-2 py-1" style="font-size: 0.65rem;">UDD 2026</span>
-            </div>
-
-            <!-- PESTAÑA 1: MENSAJES Y POP-UP -->
-            <div id="pestaña-mensajes">
-                <!-- BOTÓN PARA ACTIVAR ALERTA POP-UP -->
-                <div class="card bg-card p-3 mb-3 border-danger">
-                    <span class="badge bg-danger mb-2 wAquí tienes el código completo y actualizado en un único archivo. Puedes copiarlo y reemplazar todo el contenido del archivo `index.html` en tu repositorio de GitHub para que funcione de inmediato:
-
-```html
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AIDE - Asistencia Inteligente frente a Estafas Digitales</title>
-    <!-- Bootstrap CSS y Bootstrap Icons -->
-    <link href="[https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css](https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css)" rel="stylesheet">
-    <link rel="stylesheet" href="[https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css](https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css)">
     <style>
         :root {
             --bg-dark: #0f172a;
@@ -204,7 +36,7 @@
             flex-direction: column;
             position: relative;
             background-color: var(--bg-dark);
-            padding-bottom: 70px;
+            padding-bottom: 75px;
         }
 
         .app-header {
@@ -258,9 +90,9 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             gap: 2px;
-            width: 33%;
+            width: 25%;
             padding: 8px 0;
         }
 
@@ -269,32 +101,12 @@
         }
 
         .nav-item-btn i {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
         }
 
-        /* Modal Emergente Personalizado */
-        .scam-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.85);
-            z-index: 2000;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-
-        .scam-modal-content {
-            background: var(--card-bg);
+        .scam-alert-card {
             border: 2px solid var(--accent-danger);
-            border-radius: 20px;
-            max-width: 400px;
-            width: 100%;
-            padding: 20px;
-            box-shadow: 0 0 30px rgba(239, 68, 68, 0.4);
+            box-shadow: 0 0 20px rgba(239, 68, 68, 0.2);
         }
     </style>
 </head>
@@ -318,39 +130,29 @@
             
             <!-- PESTAÑA 1: MENSAJES -->
             <div id="pestaña-mensajes">
-                
-                <!-- BOTÓN PROBADOR POP-UP BANCO ESTADO -->
-                <div class="card bg-card p-3 mb-3 border-danger">
-                    <h6 class="text-danger fw-bold mb-2"><i class="bi bi-bell-fill me-2"></i>Simulador de Emergencia</h6>
-                    <p class="small text-muted mb-2">Prueba el sistema de alerta instantánea ante mensajes maliciosos.</p>
-                    <button class="btn btn-danger btn-sm fw-bold w-100" onclick="mostrarModalBancoEstado()">
-                        <i class="bi bi-exclamation-triangle-fill me-1"></i> Simular Mensaje Falso BancoEstado
-                    </button>
-                </div>
-
-                <!-- FILTRO DE MENSAJES -->
                 <div class="card bg-card p-3 mb-3">
-                    <h6 class="text-info fw-bold mb-2"><i class="bi bi-chat-left-dots-fill me-2"></i>Mensajes Detectados</h6>
+                    <h6 class="text-info fw-bold mb-2"><i class="bi bi-chat-left-dots-fill me-2"></i>Filtro de Mensajes Sospechosos</h6>
+                    <p class="small text-muted mb-3" style="font-size: 0.75rem;">AIDE analiza mensajes de SMS y WhatsApp para protegerte de fraudes.</p>
+
                     <div class="d-flex flex-column gap-2">
                         <div class="p-2 rounded bg-dark border border-secondary" onclick="probarMensaje('estafa1')" style="cursor:pointer;">
                             <div class="d-flex justify-content-between align-items-center">
                                 <span class="fw-bold text-warning small"><i class="bi bi-whatsapp me-1"></i>WhatsApp</span>
                                 <span class="badge badge-risk-high" style="font-size: 0.65rem;">Riesgo Alto</span>
                             </div>
-                            <p class="mb-0 text-white-50 text-truncate small">"Mamá, cambié mi número. Necesito una transferencia..."</p>
+                            <p class="mb-1 text-white-50 text-truncate small">"Mamá, cambié mi número. Necesito una transferencia..."</p>
                         </div>
 
-                        <div class="p-2 rounded bg-dark border border-secondary" onclick="mostrarModalBancoEstado()" style="cursor:pointer;">
+                        <div class="p-2 rounded bg-dark border border-secondary" onclick="probarMensaje('estafa2')" style="cursor:pointer;">
                             <div class="d-flex justify-content-between align-items-center">
                                 <span class="fw-bold text-info small"><i class="bi bi-chat-text-fill me-1"></i>SMS BancoEstado</span>
                                 <span class="badge badge-risk-high" style="font-size: 0.65rem;">Riesgo Alto</span>
                             </div>
-                            <p class="mb-0 text-white-50 text-truncate small">"Su cuenta ha sido bloqueada temporalmente. Ingrese a..."</p>
+                            <p class="mb-1 text-white-50 text-truncate small">"BancoEstado: Su cuenta ha sido suspendida. Verifique..."</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- ANALIZADOR MANUAL -->
                 <div class="card bg-card p-3">
                     <h6 class="text-info fw-bold mb-2"><i class="bi bi-search me-2"></i>Analizar Mensaje Sospechoso</h6>
                     <textarea id="msgInput" class="form-control bg-dark text-white border-secondary small mb-2" rows="3" placeholder="Pega aquí un mensaje para analizar..."></textarea>
@@ -361,10 +163,41 @@
                         <div id="resDetalle" class="small text-white-50">---</div>
                     </div>
                 </div>
-
             </div>
 
-            <!-- PESTAÑA 2: LLAMADAS -->
+            <!-- PESTAÑA 2: MENSAJE DETECTADO COMO ESTAFA -->
+            <div id="pestaña-detectados" class="d-none">
+                <div class="card bg-card p-3 scam-alert-card mb-3">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="badge bg-danger"><i class="bi bi-exclamation-triangle-fill me-1"></i>ESTAFA DETECTADA</span>
+                        <small class="text-muted" style="font-size: 0.7rem;">Hace 2 min</small>
+                    </div>
+                    
+                    <h6 class="fw-bold text-white mb-2"><i class="bi bi-chat-text-fill text-danger me-2"></i>SMS Falso de BancoEstado</h6>
+                    
+                    <div class="p-2 bg-dark rounded border border-danger mb-3">
+                        <small class="text-white-50 d-block" style="font-size: 0.8rem;">
+                            "BancoEstado: Su clave de acceso ha sido suspendida por seguridad. Ingrese urgentemente a https://bancostado-verificacion-clave.cl para reactivar."
+                        </small>
+                    </div>
+
+                    <div class="bg-danger bg-opacity-25 p-2 rounded border border-danger mb-3">
+                        <small class="text-danger fw-bold d-block mb-1"><i class="bi bi-shield-x me-1"></i>¿Por qué AIDE lo clasificó como estafa?</small>
+                        <ul class="text-white-50 ps-3 mb-0" style="font-size: 0.75rem;">
+                            <li>Usa un enlace falso no oficial de BancoEstado.</li>
+                            <li>Aplica falsa urgencia sobre bloqueo de clave.</li>
+                            <li>Busca robar credenciales de inicio de sesión.</li>
+                        </ul>
+                    </div>
+
+                    <div class="d-flex gap-2">
+                        <button class="btn btn-danger btn-sm w-100 fw-bold" onclick="alert('Remitente bloqueado.')">Bloquear Número</button>
+                        <button class="btn btn-outline-secondary btn-sm w-100" onclick="alert('Reporte enviado a AIDE.')">Eliminar y Reportar</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PESTAÑA 3: LLAMADAS -->
             <div id="pestaña-llamadas" class="d-none">
                 <div class="card bg-card p-3 text-center">
                     <h6 class="text-info fw-bold mb-2"><i class="bi bi-telephone-inbound-fill me-2"></i>Monitoreo de Llamadas</h6>
@@ -373,14 +206,14 @@
                         <h4 class="fw-bold text-warning mb-1">+56 9 4012 9981</h4>
                         <p class="text-muted small mb-2">Suplantación de Ejecutivos Bancarios</p>
                         <div class="p-2 bg-secondary bg-opacity-25 rounded text-start small mb-3" style="font-size: 0.75rem;">
-                            <i class="bi bi-shield-exclamation text-warning me-1"></i><strong>Explicación:</strong> Este número registra denuncias por solicitar claves de transferencia telefónicamente.
+                            <i class="bi bi-shield-exclamation text-warning me-1"></i><strong>Explicación:</strong> Este número registra denuncias por solicitar claves telefónicamente.
                         </div>
-                        <button class="btn btn-danger btn-sm w-100 fw-bold" onclick="alert('Número bloqueado correctamente.')">Bloquear y Reportar</button>
+                        <button class="btn btn-danger btn-sm w-100 fw-bold" onclick="alert('Número bloqueado correctamente.')">Bloquear Llamada</button>
                     </div>
                 </div>
             </div>
 
-            <!-- PESTAÑA 3: PROYECTO -->
+            <!-- PESTAÑA 4: PROYECTO -->
             <div id="pestaña-proyecto" class="d-none">
                 <div class="card bg-card p-3">
                     <h6 class="text-info fw-bold mb-3"><i class="bi bi-graph-up-arrow me-2"></i>Impacto AIDE - Datos UDD 2026</h6>
@@ -400,18 +233,22 @@
                     <div class="p-2 bg-dark rounded border border-secondary">
                         <small class="text-muted d-block">Población de Riesgo</small>
                         <span class="text-info fw-bold fs-5">40%</span>
-                        <small class="text-white-50 d-block" style="font-size: 0.7rem;">Concentrado en adultos mayores y jóvenes con menor alfabetización digital.</small>
+                        <small class="text-white-50 d-block" style="font-size: 0.7rem;">Concentrado en adultos mayores y jóvenes.</small>
                     </div>
                 </div>
             </div>
 
         </div>
 
-        <!-- BARRA DE NAVEGACIÓN INFERIOR -->
+        <!-- BARRA DE NAVEGACIÓN INFERIOR (4 BOTONES) -->
         <div class="bottom-nav">
             <button class="nav-item-btn active" id="btn-msg" onclick="cambiarPestaña('mensajes')">
                 <i class="bi bi-chat-dots-fill"></i>
                 <span>Mensajes</span>
+            </button>
+            <button class="nav-item-btn" id="btn-det" onclick="cambiarPestaña('detectados')">
+                <i class="bi bi-exclamation-triangle-fill"></i>
+                <span>Detectados</span>
             </button>
             <button class="nav-item-btn" id="btn-call" onclick="cambiarPestaña('llamadas')">
                 <i class="bi bi-telephone-fill"></i>
@@ -425,49 +262,24 @@
 
     </div>
 
-    <!-- MODAL POP-UP BANCO ESTADO -->
-    <div id="modalBancoEstado" class="scam-modal">
-        <div class="scam-modal-content text-center">
-            <div class="mb-2 text-danger fs-1">
-                <i class="bi bi-shield-slash-fill"></i>
-            </div>
-            <h5 class="fw-bold text-danger mb-1">¡ALERTA DE ESTAFA BANCOESTADO!</h5>
-            <p class="text-muted small mb-3">AIDE detectó un mensaje emergente fraudulento.</p>
-            
-            <div class="bg-dark p-2 rounded text-start border border-secondary mb-3">
-                <small class="text-warning fw-bold d-block mb-1">Mensaje Recibido:</small>
-                <small class="text-white-50 d-block" style="font-size: 0.75rem;">
-                    "BancoEstado: Su clave de acceso ha sido bloqueada. Para reactivar ingrese inmediatamente a: [https://bancostado-clave-verificacion.cl](https://bancostado-clave-verificacion.cl)"
-                </small>
-            </div>
-
-            <div class="bg-danger bg-opacity-25 p-2 rounded text-start mb-3 border border-danger">
-                <small class="text-danger fw-bold d-block"><i class="bi bi-info-circle me-1"></i>¿Por qué es falso?</small>
-                <small class="text-white-50 d-block" style="font-size: 0.7rem;">
-                    BancoEstado jamás envía enlaces por SMS para pedir claves o actualizar datos personales.
-                </small>
-            </div>
-
-            <div class="d-flex gap-2">
-                <button class="btn btn-danger btn-sm w-100 fw-bold" onclick="cerrarModalBancoEstado()">Bloquear Enlace</button>
-                <button class="btn btn-outline-secondary btn-sm w-100" onclick="cerrarModalBancoEstado()">Ignorar</button>
-            </div>
-        </div>
-    </div>
-
     <script>
         function cambiarPestaña(pestaña) {
             document.getElementById('pestaña-mensajes').classList.add('d-none');
+            document.getElementById('pestaña-detectados').classList.add('d-none');
             document.getElementById('pestaña-llamadas').classList.add('d-none');
             document.getElementById('pestaña-proyecto').classList.add('d-none');
             
             document.getElementById('btn-msg').classList.remove('active');
+            document.getElementById('btn-det').classList.remove('active');
             document.getElementById('btn-call').classList.remove('active');
             document.getElementById('btn-proj').classList.remove('active');
 
             if(pestaña === 'mensajes') {
                 document.getElementById('pestaña-mensajes').classList.remove('d-none');
                 document.getElementById('btn-msg').classList.add('active');
+            } else if(pestaña === 'detectados') {
+                document.getElementById('pestaña-detectados').classList.remove('d-none');
+                document.getElementById('btn-det').classList.add('active');
             } else if(pestaña === 'llamadas') {
                 document.getElementById('pestaña-llamadas').classList.remove('d-none');
                 document.getElementById('btn-call').classList.add('active');
@@ -477,17 +289,11 @@
             }
         }
 
-        function mostrarModalBancoEstado() {
-            document.getElementById('modalBancoEstado').style.display = 'flex';
-        }
-
-        function cerrarModalBancoEstado() {
-            document.getElementById('modalBancoEstado').style.display = 'none';
-        }
-
         function probarMensaje(tipo) {
             if(tipo === 'estafa1') {
                 document.getElementById('msgInput').value = "Mamá, cambié mi número. Necesito que me transfieras dinero urgente para solucionar una emergencia...";
+            } else {
+                document.getElementById('msgInput').value = "BancoEstado: Su cuenta ha sido suspendida. Verifique sus datos en https://bancostado-verificacion.cl";
             }
             evaluarTexto();
         }
@@ -501,14 +307,14 @@
             if(!txt.trim()) return;
 
             res.classList.remove('d-none');
-            if(txt.includes('transfieras') || txt.includes('banco') || txt.includes('http') || txt.includes('clave')) {
+            if(txt.includes('transfieras') || txt.includes('banco') || txt.includes('http') || txt.includes('suspendida')) {
                 badge.className = "badge badge-risk-high";
-                badge.innerText = "RIESGO ALTO: POSIBLE FRAUDE";
-                det.innerText = "El mensaje intenta presionar por dinero o usa enlaces sospechosos.";
+                badge.innerText = "RIESGO ALTO: ESTAFA DETECTADA";
+                det.innerText = "El mensaje intenta engañarte con lenguaje de urgencia o un enlace falso.";
             } else {
                 badge.className = "badge badge-risk-low";
                 badge.innerText = "MENSAJE SEGURO";
-                det.innerText = "No se detectaron patrones de engaño o enlaces maliciosos.";
+                det.innerText = "No se detectaron elementos sospechosos.";
             }
         }
     </script>
