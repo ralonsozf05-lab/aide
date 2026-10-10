@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AIDE Mobile - App Anti-Estafas</title>
+    <title>CyberShield Mobile - App Anti-Estafas</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons -->
@@ -35,8 +35,10 @@
             background: radial-gradient(circle at top, #1e293b, #0f172a, #020617);
             font-family: 'Inter', sans-serif;
             color: #f8fafc;
+            min-h-screen;
         }
 
+        /* Custom Mobile Scrollbars */
         .no-scrollbar::-webkit-scrollbar {
             display: none;
         }
@@ -45,6 +47,7 @@
             scrollbar-width: none;
         }
 
+        /* Pulse Radar Scan Effect */
         @keyframes radar-sweep {
             0% { transform: scale(0.95); opacity: 0.8; }
             50% { transform: scale(1.15); opacity: 0.3; }
@@ -54,6 +57,7 @@
             animation: radar-sweep 2.5s infinite ease-in-out;
         }
 
+        /* Pulse Call Vibration */
         @keyframes phone-ring {
             0% { transform: rotate(0deg) scale(1); }
             10% { transform: rotate(12deg) scale(1.05); }
@@ -70,21 +74,22 @@
 </head>
 <body class="min-h-screen flex items-center justify-center p-2 sm:p-6 overflow-x-hidden select-none">
 
-    <!-- Chassis Wrapper -->
+    <!-- Smartphone Chassis Wrapper -->
     <div class="relative w-full max-w-[400px] h-[830px] bg-slate-900 rounded-[50px] p-3 shadow-2xl border-4 border-slate-700/60 ring-1 ring-slate-500/30 flex flex-col overflow-hidden">
         
-        <!-- Physical Buttons -->
+        <!-- Phone Side Physical Buttons Simulation -->
         <div class="absolute -left-[7px] top-28 w-[3px] h-10 bg-slate-600 rounded-l-sm"></div>
         <div class="absolute -left-[7px] top-42 w-[3px] h-12 bg-slate-600 rounded-l-sm"></div>
         <div class="absolute -right-[7px] top-36 w-[3px] h-16 bg-slate-600 rounded-r-sm"></div>
 
-        <!-- Phone Screen Area -->
+        <!-- Inner Phone Screen Area -->
         <div class="relative w-full h-full bg-mobileBg rounded-[42px] overflow-hidden flex flex-col border border-slate-800">
 
-            <!-- Status Bar -->
+            <!-- Mobile Status Bar (Clock, Notch, Battery, Wifi) -->
             <div class="h-11 bg-mobileBg/90 backdrop-blur-md px-6 flex items-center justify-between text-slate-400 text-xs font-semibold z-30 shrink-0">
                 <span id="current-time">14:25</span>
                 
+                <!-- Camera Notch Pill -->
                 <div class="w-24 h-5 bg-black rounded-full flex items-center justify-center space-x-1.5 shadow-inner">
                     <div class="w-2.5 h-2.5 bg-slate-900 rounded-full border border-slate-800"></div>
                     <div class="w-1.5 h-1.5 bg-blue-900/60 rounded-full"></div>
@@ -97,7 +102,7 @@
                 </div>
             </div>
 
-            <!-- App Header -->
+            <!-- Top App Header -->
             <header class="px-5 py-3 bg-mobileBg/80 backdrop-blur-md border-b border-cardBorder/50 flex items-center justify-between z-20 shrink-0">
                 <div class="flex items-center space-x-2.5">
                     <div class="w-8 h-8 rounded-xl bg-blue-600/20 border border-blue-500/40 flex items-center justify-center text-brandBlue shadow-lg shadow-blue-500/10">
@@ -105,8 +110,8 @@
                     </div>
                     <div>
                         <h1 class="text-sm font-bold text-white tracking-tight flex items-center gap-1.5">
-                            AIDE Anti-Scam
-                            <span class="text-[9px] bg-blue-500/20 text-blue-400 border border-blue-500/30 px-1.5 py-0.2 rounded-full uppercase font-extrabold">UDD 2026</span>
+                            CyberShield
+                            <span class="text-[9px] bg-blue-500/20 text-blue-400 border border-blue-500/30 px-1.5 py-0.2 rounded-full uppercase font-extrabold">PRO</span>
                         </h1>
                         <p class="text-[10px] text-slate-400 font-medium">Escudo Anti-Estafas Activo</p>
                     </div>
@@ -117,14 +122,17 @@
                 </button>
             </header>
 
-            <!-- MAIN CONTAINER -->
+            <!-- MAIN SCROLLABLE VIEW CONTAINER -->
             <div id="screen-container" class="flex-1 overflow-y-auto no-scrollbar p-4 space-y-4 relative">
 
-                <!-- 1. HOME MODULE -->
+                <!-- ================= 1. HOME DASHBOARD MODULE ================= -->
                 <div id="view-home" class="space-y-4">
+                    
+                    <!-- Radar Shield Status Card -->
                     <div class="bg-gradient-to-b from-cardBg to-slate-900 border border-cardBorder rounded-2xl p-5 text-center relative overflow-hidden shadow-xl">
                         <div class="absolute -right-8 -top-8 w-24 h-24 bg-blue-500/10 rounded-full blur-xl"></div>
                         
+                        <!-- Animated Circular Radar -->
                         <div class="relative w-28 h-28 mx-auto my-1 flex items-center justify-center">
                             <div class="absolute inset-0 rounded-full border border-blue-500/20 animate-radar"></div>
                             <div class="absolute inset-3 rounded-full border border-emerald-500/30"></div>
@@ -143,6 +151,7 @@
                         </button>
                     </div>
 
+                    <!-- Quick Summary Metrics -->
                     <div class="grid grid-cols-3 gap-2.5">
                         <div class="bg-cardBg border border-cardBorder p-3 rounded-xl text-center">
                             <i class="fa-solid fa-phone-slash text-amber-400 text-sm mb-1"></i>
@@ -161,89 +170,75 @@
                         </div>
                     </div>
 
+                    <!-- Live Threats Feed Preview -->
+                    <div class="bg-cardBg border border-cardBorder rounded-2xl p-4 space-y-3">
+                        <div class="flex items-center justify-between border-b border-cardBorder/60 pb-2">
+                            <h3 class="text-xs font-bold text-slate-200 flex items-center gap-1.5">
+                                <i class="fa-solid fa-bolt text-brandAmber"></i>
+                                Alertas Recientes
+                            </h3>
+                            <button onclick="switchTab('messages')" class="text-[10px] text-brandBlue font-semibold hover:underline">Ver todo</button>
+                        </div>
+
+                        <!-- Mini Feed Items -->
+                        <div onclick="openMessageDetail(0)" class="p-2.5 bg-slate-900/90 rounded-xl border border-red-500/30 flex items-center justify-between cursor-pointer hover:bg-slate-900 transition-all">
+                            <div class="flex items-center space-x-2.5">
+                                <div class="w-8 h-8 rounded-lg bg-red-500/20 text-red-400 flex items-center justify-center shrink-0">
+                                    <i class="fa-solid fa-box text-xs"></i>
+                                </div>
+                                <div class="min-w-0">
+                                    <p class="text-xs font-bold text-white truncate">Correos de Chile Falso</p>
+                                    <p class="text-[10px] text-slate-400 truncate">Paquete retenido con link fraudulento</p>
+                                </div>
+                            </div>
+                            <span class="text-[9px] bg-red-500/20 text-red-400 px-1.5 py-0.5 rounded font-bold border border-red-500/30 shrink-0">PELIGRO</span>
+                        </div>
+
+                        <div onclick="openMessageDetail(1)" class="p-2.5 bg-slate-900/90 rounded-xl border border-red-500/30 flex items-center justify-between cursor-pointer hover:bg-slate-900 transition-all">
+                            <div class="flex items-center space-x-2.5">
+                                <div class="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">
+                                    <i class="fa-brands fa-whatsapp text-sm"></i>
+                                </div>
+                                <div class="min-w-0">
+                                    <p class="text-xs font-bold text-white truncate">Estafa WhatsApp "Tío/Papá"</p>
+                                    <p class="text-[10px] text-slate-400 truncate">Solicitud de transferencia por accidente</p>
+                                </div>
+                            </div>
+                            <span class="text-[9px] bg-red-500/20 text-red-400 px-1.5 py-0.5 rounded font-bold border border-red-500/30 shrink-0">ESTAFA</span>
+                        </div>
+                    </div>
+
+                    <!-- Call Assistant Banner Quick Action -->
                     <div class="bg-gradient-to-r from-slate-900 to-amber-950/40 border border-amber-500/30 rounded-2xl p-3.5 flex items-center justify-between">
                         <div class="space-y-0.5">
                             <span class="text-[10px] font-bold text-amber-400 uppercase tracking-wider">Simulación Interactiva</span>
-                            <h4 class="text-xs font-bold text-white">Prueba la defensa de llamadas</h4>
+                            <h4 class="text-xs font-bold text-white">¿Quieres probar la defensa de llamadas?</h4>
                             <p class="text-[10px] text-slate-400">Simula una llamada sospechosa de banco.</p>
                         </div>
                         <button onclick="triggerIncomingCall()" class="px-3 py-2 bg-amber-500/20 text-amber-300 border border-amber-500/40 rounded-xl text-xs font-bold hover:bg-amber-500/30 active:scale-95 transition-all shrink-0">
                             Simular
                         </button>
                     </div>
+
                 </div>
 
-                <!-- 2. MESSAGES MODULE -->
+                <!-- ================= 2. MESSAGES & WHATSAPP MODULE ================= -->
                 <div id="view-messages" class="hidden space-y-3">
                     <div class="flex items-center justify-between">
                         <div>
-                            <h2 class="text-sm font-bold text-white">Filtro de Mensajes</h2>
-                            <p class="text-[10px] text-slate-400">Análisis de SMS y WhatsApp</p>
+                            <h2 class="text-sm font-bold text-white">Bandeja Anti-Phishing</h2>
+                            <p class="text-[10px] text-slate-400">Análisis inteligente de SMS y WhatsApp</p>
                         </div>
                         <span class="text-[10px] bg-red-500/20 text-red-400 border border-red-500/30 px-2 py-0.5 rounded-full font-bold">2 Riesgos Altos</span>
                     </div>
 
-                    <div class="space-y-2.5" id="messages-list-container"></div>
-                </div>
-
-                <!-- 3. DETECTED SCAM MODULE -->
-                <div id="view-detected" class="hidden space-y-3">
-                    <div class="flex items-center justify-between">
-                        <div>
-                            <h2 class="text-sm font-bold text-white">Mensaje Detectado como Estafa</h2>
-                            <p class="text-[10px] text-slate-400">Análisis detallado de amenaza activa</p>
-                        </div>
-                        <span class="text-[10px] bg-red-500/20 text-red-400 border border-red-500/30 px-2 py-0.5 rounded-full font-bold">AMENAZA</span>
-                    </div>
-
-                    <div class="bg-cardBg border-2 border-red-500/60 rounded-2xl p-4 space-y-3 shadow-lg shadow-red-500/10">
-                        <div class="flex items-center justify-between border-b border-cardBorder pb-2">
-                            <div class="flex items-center gap-2">
-                                <i class="fa-solid fa-comment-sms text-red-400 text-sm"></i>
-                                <span class="text-xs font-bold text-white">SMS Falso BancoEstado</span>
-                            </div>
-                            <span class="text-[9px] text-slate-400">Hace 2 min</span>
-                        </div>
-
-                        <div class="bg-slate-950 p-3 rounded-xl border border-red-500/30">
-                            <p class="text-xs font-mono text-slate-300">
-                                "BancoEstado: Su clave de acceso ha sido suspendida por seguridad. Ingrese urgentemente a https://bancostado-verificacion-clave.cl para reactivar."
-                            </p>
-                        </div>
-
-                        <div class="bg-red-500/10 border border-red-500/30 p-3 rounded-xl space-y-1.5">
-                            <h4 class="text-xs font-bold text-red-400 flex items-center gap-1.5">
-                                <i class="fa-solid fa-shield-xmark"></i>
-                                ¿Por qué AIDE lo clasificó como estafa?
-                            </h4>
-                            <ul class="space-y-1 text-[11px] text-slate-300">
-                                <li class="flex items-start gap-1.5">
-                                    <i class="fa-solid fa-xmark text-red-400 mt-0.5"></i>
-                                    <span>Usa un enlace falso no oficial de BancoEstado.</span>
-                                </li>
-                                <li class="flex items-start gap-1.5">
-                                    <i class="fa-solid fa-xmark text-red-400 mt-0.5"></i>
-                                    <span>Aplica falsa urgencia sobre bloqueo de clave.</span>
-                                </li>
-                                <li class="flex items-start gap-1.5">
-                                    <i class="fa-solid fa-xmark text-red-400 mt-0.5"></i>
-                                    <span>Busca robar credenciales de inicio de sesión.</span>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div class="grid grid-cols-2 gap-2 pt-1">
-                            <button onclick="alert('Número emisor de BancoEstado Falso bloqueado.')" class="w-full bg-red-600 hover:bg-red-500 text-white font-bold text-xs py-2.5 rounded-xl transition-all">
-                                Bloquear Número
-                            </button>
-                            <button onclick="alert('Reporte enviado a AIDE.')" class="w-full bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold text-xs py-2.5 rounded-xl border border-slate-700 transition-all">
-                                Eliminar y Reportar
-                            </button>
-                        </div>
+                    <!-- Message Inbox List -->
+                    <div class="space-y-2.5" id="messages-list-container">
+                        <!-- Items populated via JavaScript -->
                     </div>
                 </div>
 
-                <!-- 4. CALLS MODULE -->
+                <!-- ================= 3. CALLS & AI ASSISTANT MODULE ================= -->
                 <div id="view-calls" class="hidden space-y-3">
                     <div class="flex items-center justify-between">
                         <div>
@@ -255,6 +250,7 @@
                         </button>
                     </div>
 
+                    <!-- Calls Log List -->
                     <div class="space-y-2">
                         <div class="bg-cardBg border border-cardBorder p-3 rounded-xl flex items-center justify-between">
                             <div class="flex items-center space-x-3">
@@ -279,7 +275,7 @@
                                 </div>
                                 <div>
                                     <p class="text-xs font-bold text-white">+56 2 2910 4400</p>
-                                    <p class="text-[10px] text-amber-400 font-medium">Spam Telefónico</p>
+                                    <p class="text-[10px] text-amber-400 font-medium">Spam Telefónico / Encuestas</p>
                                 </div>
                             </div>
                             <div class="text-right">
@@ -287,40 +283,114 @@
                                 <span class="text-[9px] bg-amber-500/20 text-amber-400 px-1.5 py-0.2 rounded border border-amber-500/30 font-bold">ADVERTIDA</span>
                             </div>
                         </div>
+
+                        <div class="bg-cardBg border border-cardBorder p-3 rounded-xl flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-8 h-8 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xs shrink-0">
+                                    <i class="fa-solid fa-check"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs font-bold text-white">+56 9 9231 1122</p>
+                                    <p class="text-[10px] text-slate-400 font-medium">Contacto Guardado (Mamá)</p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-[10px] text-slate-400 block">Ayer</span>
+                                <span class="text-[9px] bg-emerald-500/20 text-emerald-400 px-1.5 py-0.2 rounded border border-emerald-500/30 font-bold">SEGURO</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- AI Call Assistant Card Explanation -->
+                    <div class="p-3.5 bg-slate-900 border border-blue-500/30 rounded-2xl space-y-2">
+                        <div class="flex items-center space-x-2 text-blue-400">
+                            <i class="fa-solid fa-robot text-sm"></i>
+                            <span class="text-xs font-bold text-white">Contestador IA Anti-Estafa</span>
+                        </div>
+                        <p class="text-[11px] text-slate-300">Cuando entra una llamada desconocida, el asistente contesta por ti en segundo plano y exige autenticación verbal antes de transferir la llamada.</p>
                     </div>
                 </div>
 
-                <!-- 5. SCANNER MODULE -->
+                <!-- ================= 4. MANUAL SCANNER MODULE ================= -->
                 <div id="view-scanner" class="hidden space-y-3">
                     <div>
-                        <h2 class="text-sm font-bold text-white">Escáner Manual</h2>
-                        <p class="text-[10px] text-slate-400">Verifica textos, links sospechosos o números</p>
+                        <h2 class="text-sm font-bold text-white">Escáner Rápido</h2>
+                        <p class="text-[10px] text-slate-400">Verifica textos, links sospechosos o números telefónicos</p>
                     </div>
 
+                    <!-- Input Box -->
                     <div class="space-y-2">
-                        <textarea id="mobile-scan-input" rows="3" placeholder="Pega aquí el mensaje o link sospechoso..." class="w-full bg-cardBg border border-cardBorder rounded-xl p-3 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 transition-all resize-none"></textarea>
+                        <textarea id="mobile-scan-input" rows="3" placeholder="Pega aquí el mensaje, link sospechoso (ej. bit.ly/...) o número de teléfono..." class="w-full bg-cardBg border border-cardBorder rounded-xl p-3 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 transition-all resize-none"></textarea>
                         
                         <button onclick="runMobileScan()" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs py-2.5 rounded-xl shadow-md shadow-blue-600/30 active:scale-95 transition-all flex items-center justify-center space-x-2">
-                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <i class="fa-solid fa-magnifying-glass font-bold"></i>
                             <span>Analizar Ahora</span>
                         </button>
                     </div>
 
+                    <!-- Preset Quick Test Buttons -->
+                    <div class="space-y-2 pt-2">
+                        <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Pruebas Rápidas con Estafas Comunes:</span>
+                        
+                        <div class="space-y-1.5">
+                            <button onclick="loadScannerPreset(0)" class="w-full text-left p-2.5 bg-cardBg border border-cardBorder hover:border-slate-600 rounded-xl transition-all flex items-center justify-between">
+                                <div>
+                                    <p class="text-xs font-bold text-red-400">📦 "Paquete Retenido en Correos"</p>
+                                    <p class="text-[10px] text-slate-400">Correos de Chile / SMS con link falso</p>
+                                </div>
+                                <i class="fa-solid fa-chevron-right text-slate-500 text-xs"></i>
+                            </button>
+
+                            <button onclick="loadScannerPreset(1)" class="w-full text-left p-2.5 bg-cardBg border border-cardBorder hover:border-slate-600 rounded-xl transition-all flex items-center justify-between">
+                                <div>
+                                    <p class="text-xs font-bold text-red-400">🚨 "Accidente Tío / Papá deposítame"</p>
+                                    <p class="text-[10px] text-slate-400">Cuento del tío / WhatsApp urgente</p>
+                                </div>
+                                <i class="fa-solid fa-chevron-right text-slate-500 text-xs"></i>
+                            </button>
+
+                            <button onclick="loadScannerPreset(2)" class="w-full text-left p-2.5 bg-cardBg border border-cardBorder hover:border-slate-600 rounded-xl transition-all flex items-center justify-between">
+                                <div>
+                                    <p class="text-xs font-bold text-amber-400">💼 "Trabajo $200.000 diarios Telegram"</p>
+                                    <p class="text-[10px] text-slate-400">Oferta laboral piramidal / Estafa de likes</p>
+                                </div>
+                                <i class="fa-solid fa-chevron-right text-slate-500 text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Scan Results Box -->
                     <div id="mobile-scan-result" class="hidden"></div>
                 </div>
 
             </div>
 
+            <!-- MESSAGE DETAIL OVERLAY INSIDE PHONE -->
+            <div id="message-detail-overlay" class="absolute inset-x-0 bottom-0 top-11 bg-mobileBg/95 backdrop-blur-lg z-40 hidden flex-col p-4 overflow-y-auto no-scrollbar space-y-3">
+                <div class="flex items-center justify-between border-b border-cardBorder pb-2">
+                    <button onclick="closeMessageDetail()" class="text-slate-400 hover:text-white text-xs font-semibold flex items-center gap-1">
+                        <i class="fa-solid fa-arrow-left"></i> Volver
+                    </button>
+                    <span id="detail-tag" class="text-[9px] bg-red-500/20 text-red-400 border border-red-500/30 px-2 py-0.5 rounded-full font-bold">ESTAFA DETECTADA</span>
+                </div>
+
+                <div id="detail-body-content" class="space-y-3">
+                    <!-- Populated dynamically -->
+                </div>
+            </div>
+
             <!-- INCOMING CALL SIMULATION OVERLAY -->
             <div id="incoming-call-screen" class="absolute inset-0 bg-slate-950/95 backdrop-blur-xl z-50 hidden flex-col justify-between p-6 text-center">
+                <!-- Top Incoming Alert Badge -->
                 <div class="pt-4 space-y-1">
                     <div class="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-red-500/20 border border-red-500/40 text-red-400 text-[10px] font-bold animate-pulse">
                         <i class="fa-solid fa-triangle-exclamation"></i>
-                        <span>ALERTA AIDE ANTI-ESTAFA</span>
+                        <span>ALERTA ANTI-ESTAFA</span>
                     </div>
                     <p class="text-xs text-slate-400">Llamada Entrante Detectada</p>
                 </div>
 
+                <!-- Call Caller Info -->
                 <div class="space-y-3 my-auto">
                     <div class="w-24 h-24 rounded-full bg-red-500/10 border-2 border-red-500/40 text-red-400 flex items-center justify-center mx-auto text-3xl animate-ring shadow-xl shadow-red-500/20">
                         <i class="fa-solid fa-user-ninja"></i>
@@ -328,13 +398,14 @@
 
                     <div>
                         <h3 class="text-lg font-bold text-white">+56 2 2990 1199</h3>
-                        <p class="text-xs text-red-400 font-bold mt-0.5">⚠️ Posible Suplantación Banco</p>
+                        <p class="text-xs text-red-400 font-bold mt-0.5">⚠️ Posible Suplantación Banco Chile</p>
                         <p class="text-[11px] text-slate-400 max-w-[220px] mx-auto mt-2 bg-slate-900 border border-slate-800 p-2 rounded-lg">
                             "Reportado por solicitar claves dinámicas de transferencia."
                         </p>
                     </div>
                 </div>
 
+                <!-- Call Action Buttons -->
                 <div class="space-y-2.5 pb-4">
                     <button onclick="answerWithAI()" class="w-full bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold py-3 rounded-xl flex items-center justify-center space-x-2 shadow-lg shadow-blue-600/30 active:scale-95 transition-all">
                         <i class="fa-solid fa-robot"></i>
@@ -348,36 +419,33 @@
                 </div>
             </div>
 
-            <!-- BOTTOM NAVIGATION BAR (5 BUTTONS) -->
-            <nav class="h-16 bg-cardBg/95 backdrop-blur-md border-t border-cardBorder px-2 grid grid-cols-5 items-center z-30 shrink-0">
+            <!-- BOTTOM NAVIGATION BAR (NATIVE MOBILE STYLE) -->
+            <nav class="h-16 bg-cardBg/95 backdrop-blur-md border-t border-cardBorder px-4 grid grid-cols-4 items-center z-30 shrink-0">
                 <button onclick="switchTab('home')" id="nav-btn-home" class="flex flex-col items-center space-y-1 text-brandBlue transition-all">
-                    <i class="fa-solid fa-house text-sm"></i>
-                    <span class="text-[8px] font-bold">Inicio</span>
+                    <i class="fa-solid fa-house text-base"></i>
+                    <span class="text-[9px] font-bold">Inicio</span>
                 </button>
 
                 <button onclick="switchTab('messages')" id="nav-btn-messages" class="flex flex-col items-center space-y-1 text-slate-500 transition-all">
-                    <i class="fa-solid fa-message text-sm"></i>
-                    <span class="text-[8px] font-bold">Mensajes</span>
-                </button>
-
-                <button onclick="switchTab('detected')" id="nav-btn-detected" class="flex flex-col items-center space-y-1 text-slate-500 transition-all">
                     <div class="relative">
-                        <i class="fa-solid fa-triangle-exclamation text-sm text-red-400"></i>
+                        <i class="fa-solid fa-message text-base"></i>
+                        <span class="absolute -top-1 -right-2 w-2 h-2 bg-brandRed rounded-full"></span>
                     </div>
-                    <span class="text-[8px] font-bold text-red-400">Detectados</span>
+                    <span class="text-[9px] font-bold">Mensajes</span>
                 </button>
 
                 <button onclick="switchTab('calls')" id="nav-btn-calls" class="flex flex-col items-center space-y-1 text-slate-500 transition-all">
-                    <i class="fa-solid fa-phone-slash text-sm"></i>
-                    <span class="text-[8px] font-bold">Llamadas</span>
+                    <i class="fa-solid fa-phone-slash text-base"></i>
+                    <span class="text-[9px] font-bold">Llamadas</span>
                 </button>
 
                 <button onclick="switchTab('scanner')" id="nav-btn-scanner" class="flex flex-col items-center space-y-1 text-slate-500 transition-all">
-                    <i class="fa-solid fa-wand-magic-sparkles text-sm"></i>
-                    <span class="text-[8px] font-bold">Escáner</span>
+                    <i class="fa-solid fa-wand-magic-sparkles text-base"></i>
+                    <span class="text-[9px] font-bold">Escáner</span>
                 </button>
             </nav>
 
+            <!-- iPhone Home Indicator Bar -->
             <div class="h-4 bg-mobileBg flex items-center justify-center shrink-0">
                 <div class="w-28 h-1 bg-slate-700 rounded-full"></div>
             </div>
@@ -386,6 +454,7 @@
     </div>
 
     <script>
+        // Real-Time Clock Simulator
         function updateClock() {
             const now = new Date();
             const hours = String(now.getHours()).padStart(2, '0');
@@ -395,40 +464,68 @@
         setInterval(updateClock, 1000);
         updateClock();
 
+        // Sample Mobile Scam Database
         const scamDatabase = [
             {
                 id: 0,
-                title: "SMS BancoEstado / Clave Bloqueada",
-                sender: "SMS-Banco",
-                tag: "ALTO RIESGO",
-                text: "BancoEstado: Su clave de acceso ha sido suspendida. Reagende en: https://bancostado-clave-verificacion.cl"
+                title: "Correos de Chile / Paquete Retenido",
+                sender: "SMS-Notifica",
+                tag: "PELIGRO PHISHING",
+                type: "Smiishing / Robo de Tarjeta",
+                text: "SU PAQUETE TIENE LA DIRECCIÓN INCOMPLETA Y NO PUDO SER ENTREGADO. ACTUALICE SUS DATOS EN MENOS DE 12 HRS EN: https://correos-chile-actualizar-datos.net",
+                reasons: [
+                    "La URL verdadera oficial es correos.cl, no el dominio falso provisto.",
+                    "Genera falsa sensación de urgencia (12 horas).",
+                    "Te solicitará un pago de $500 para robar los datos completos de tu tarjeta de crédito/débito."
+                ]
             },
             {
                 id: 1,
-                title: "Estafa WhatsApp / Tío en Apuros",
+                title: "Estafa Tío / Papá en Apuros (WhatsApp)",
                 sender: "+56 9 7781 0023",
-                tag: "ESTAFA",
-                text: "Mamá, cambié mi número. Necesito que me transfieras dinero urgente para solucionar una emergencia..."
+                tag: "ESTAFA DE DINERO",
+                type: "Suplantación / Cuento del Tío",
+                text: "Hola tío/mamá, cambié de número porque me asaltaron y me quitaron el teléfono. Estoy en la comisaría y necesito que me hagas una transferencia urgente a este RUT...",
+                reasons: [
+                    "Estrategia de conmoción emocional para evitar que pienses con calma.",
+                    "Piden transferencia inmediata a un tercero desconocido.",
+                    "Siempre verifica llamando directamente al número habitual de tu familiar antes de transferir $1."
+                ]
+            },
+            {
+                id: 2,
+                title: "Oferta de Trabajo Falso Telegram",
+                sender: "+63 912 882 102",
+                tag: "OFERTA ENGAÑOSA",
+                type: "Estafa Piramidal / Likes de TikTok",
+                text: "¡Hola! Somos de la agencia de marketing internacional. Gana entre $50.000 y $200.000 diarios solo dando likes a videos de YouTube. Escríbenos a Telegram...",
+                reasons: [
+                    "Números internacionales de origen desconocido (+63 Filipinas).",
+                    "Promesas de dinero fácil y excesivo sin requisitos profesionales.",
+                    "Consiste en una estafa de tareas donde luego te exigen depositar para liberarte tus 'ganancias'."
+                ]
             }
         ];
 
+        // Populate Messages List
         function renderMessagesList() {
             const container = document.getElementById('messages-list-container');
-            container.innerHTML = scamDatabase.map((item) => `
-                <div class="bg-cardBg border border-cardBorder p-3 rounded-xl space-y-2">
+            container.innerHTML = scamDatabase.map((item, index) => `
+                <div onclick="openMessageDetail(${index})" class="bg-cardBg border border-cardBorder hover:border-slate-600 p-3 rounded-xl space-y-2 cursor-pointer transition-all active:scale-[0.98]">
                     <div class="flex items-center justify-between">
                         <span class="text-[10px] font-bold text-slate-400">${item.sender}</span>
                         <span class="text-[9px] bg-red-500/20 text-red-400 border border-red-500/30 px-1.5 py-0.2 rounded font-bold">${item.tag}</span>
                     </div>
-                    <p class="text-xs font-bold text-white">${item.title}</p>
-                    <p class="text-[10px] text-slate-400">"${item.text}"</p>
+                    <p class="text-xs font-bold text-white line-clamp-1">${item.title}</p>
+                    <p class="text-[10px] text-slate-400 line-clamp-2">"${item.text}"</p>
                 </div>
             `).join('');
         }
         renderMessagesList();
 
+        // Switch Navigation Tabs
         function switchTab(tab) {
-            const tabs = ['home', 'messages', 'detected', 'calls', 'scanner'];
+            const tabs = ['home', 'messages', 'calls', 'scanner'];
             
             tabs.forEach(t => {
                 document.getElementById(`view-${t}`).classList.add('hidden');
@@ -443,6 +540,59 @@
             activeBtn.classList.remove('text-slate-500');
         }
 
+        // Open Detail Modal inside Phone
+        function openMessageDetail(index) {
+            const item = scamDatabase[index];
+            const overlay = document.getElementById('message-detail-overlay');
+            const body = document.getElementById('detail-body-content');
+
+            body.innerHTML = `
+                <div class="space-y-3">
+                    <div class="bg-cardBg border border-cardBorder p-3 rounded-xl">
+                        <span class="text-[10px] text-slate-400 block mb-1">Remitente: <strong>${item.sender}</strong></span>
+                        <h3 class="text-sm font-bold text-white">${item.title}</h3>
+                        <p class="text-xs font-mono bg-slate-950 p-2.5 rounded-lg border border-slate-800 text-slate-300 mt-2">
+                            "${item.text}"
+                        </p>
+                    </div>
+
+                    <div class="bg-red-500/10 border border-red-500/30 p-3 rounded-xl space-y-2">
+                        <h4 class="text-xs font-bold text-red-400 flex items-center gap-1.5">
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                            ¿Por qué es una estafa? (${item.type})
+                        </h4>
+                        <ul class="space-y-1.5">
+                            ${item.reasons.map(r => `
+                                <li class="text-[11px] text-slate-300 flex items-start gap-1.5">
+                                    <i class="fa-solid fa-xmark text-red-400 mt-0.5 text-[10px]"></i>
+                                    <span>${r}</span>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+
+                    <button onclick="actionBlockAndReport('${item.title}')" class="w-full bg-red-600 hover:bg-red-500 text-white font-bold text-xs py-3 rounded-xl shadow-lg shadow-red-600/30 active:scale-95 transition-all">
+                        <i class="fa-solid fa-ban mr-1"></i> Bloquear Número y Reportar Estafa
+                    </button>
+                </div>
+            `;
+
+            overlay.classList.remove('hidden');
+            overlay.classList.add('flex');
+        }
+
+        function closeMessageDetail() {
+            const overlay = document.getElementById('message-detail-overlay');
+            overlay.classList.add('hidden');
+            overlay.classList.remove('flex');
+        }
+
+        function actionBlockAndReport(title) {
+            alert(`✅ El emisor de "${title}" ha sido bloqueado y reportado a la red comunitaria Anti-Estafas.`);
+            closeMessageDetail();
+        }
+
+        // Trigger Incoming Call Simulation
         function triggerIncomingCall() {
             const callScreen = document.getElementById('incoming-call-screen');
             callScreen.classList.remove('hidden');
@@ -457,10 +607,11 @@
         }
 
         function answerWithAI() {
-            alert('🤖 Asistente AIDE Activado: "Esta línea está protegida. Indique su RUT y motivo de llamada..." \n\n[El estafador ha colgado la llamada].');
+            alert('🤖 Asistente IA Activado: "Estimado emisor, esta línea está protegida por CyberShield. Por favor indique su RUT y motivo de llamada para validación..." \n\n[El estafador ha colgado la llamada].');
             hangUpCall('Estafador ahuyentado por la IA');
         }
 
+        // Full Device Scan Simulation
         function triggerFullScan() {
             const btnText = document.getElementById('scan-btn-text');
             btnText.innerText = 'Escaneando SMS y Llamadas...';
@@ -476,6 +627,13 @@
             triggerFullScan();
         }
 
+        // Scanner Module Logic
+        function loadScannerPreset(id) {
+            const item = scamDatabase[id];
+            document.getElementById('mobile-scan-input').value = item.text;
+            runMobileScan();
+        }
+
         function runMobileScan() {
             const text = document.getElementById('mobile-scan-input').value.trim();
             const result = document.getElementById('mobile-scan-result');
@@ -489,9 +647,13 @@
             result.innerHTML = `
                 <div class="p-3.5 bg-red-500/10 border border-red-500/40 rounded-xl space-y-2 mt-2">
                     <div class="flex items-center justify-between text-red-400 font-bold text-xs">
-                        <span><i class="fa-solid fa-triangle-exclamation"></i> RIESGO ALTO DE ESTAFA</span>
+                        <span class="flex items-center gap-1">
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                            RIESGO ALTO DE ESTAFA
+                        </span>
+                        <span>96% Coincidencia</span>
                     </div>
-                    <p class="text-[11px] text-slate-300">AIDE detectó patrones de suplantación de identidad y enlaces sospechosos.</p>
+                    <p class="text-[11px] text-slate-300">Patrón detectado: Intento de suplantación de identidad mediante urgencia y enlace externo.</p>
                 </div>
             `;
         }
